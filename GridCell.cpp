@@ -35,6 +35,8 @@
 #include "InPlaceEdit.h"
 #include "GridCtrl.h"
 
+#pragma warning(disable:4996)
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #undef THIS_FILE

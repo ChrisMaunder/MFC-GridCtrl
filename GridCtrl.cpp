@@ -4,7 +4,7 @@
 //
 // Written by Chris Maunder <chris@codeproject.com>
 // Copyright (c) 1998-2005. All Rights Reserved.
-/
+//
 // The code contained in this file was based on the original
 // WorldCom Grid control written by Joe Willcoxson,
 //        mailto:chinajoe@aol.com
@@ -118,13 +118,17 @@
 /////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "MemDC.h"
 #include "GridCtrl.h"
 #include <algorithm>
+namespace gridctrl {
+#include "MemDC.h"
+}
 
 // OLE stuff for clipboard operations
 #include <afxadv.h>            // For CSharedFile
 #include <afxconv.h>           // For LPTSTR -> LPSTR macros
+
+#pragma warning(disable:4996)
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -617,7 +621,7 @@ void CGridCtrl::OnPaint()
 
     if (m_bDoubleBuffer)    // Use a memory DC to remove flicker
     {
-        CMemDC MemDC(&dc);
+        gridctrl::CMemDC MemDC(&dc);
         OnDraw(&MemDC);
     }
     else                    // Draw raw - this helps in debugging vis problems.
@@ -824,7 +828,7 @@ void CGridCtrl::OnSettingChange(UINT uFlags, LPCTSTR lpszSection)
 
 // For drag-selection. Scrolls hidden cells into view
 // TODO: decrease timer interval over time to speed up selection over time
-void CGridCtrl::OnTimer(UINT nIDEvent)
+void CGridCtrl::OnTimer(UINT_PTR nIDEvent)
 {
     ASSERT(nIDEvent == WM_LBUTTONDOWN);
     if (nIDEvent != WM_LBUTTONDOWN)
