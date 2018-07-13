@@ -1,0 +1,8 @@
+Digistatic
+----------
+
+MFC Library for Grid control
+
+Original project: https://www.codeproject.com/Articles/8/MFC-Grid-control-2-27
+
+Slightly fixed to working on VS2017

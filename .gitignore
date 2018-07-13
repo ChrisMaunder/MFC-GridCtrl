@@ -1,0 +1,7 @@
+.cs
+.vs
+*.aps
+*.user
+*.tmp
+Debug
+Release
