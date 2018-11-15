@@ -1816,7 +1816,7 @@ void CGridCtrl::OnDraw(CDC* pDC)
 #ifdef _DEBUG
 	LARGE_INTEGER iEndCount;
 	QueryPerformanceCounter(&iEndCount);
-	TRACE1("Draw counter ticks: %d\n", iEndCount.LowPart-iStartCount.LowPart);
+	// TRACE1("Draw counter ticks: %d\n", iEndCount.LowPart-iStartCount.LowPart);
 #endif
 
 }
@@ -5905,7 +5905,7 @@ CPoint CGridCtrl::GetPointClicked(int nRow, int nCol, const CPoint& point)
 
 void CGridCtrl::OnLButtonDblClk(UINT nFlags, CPoint point)
 {
-    TRACE0("CGridCtrl::OnLButtonDblClk\n");
+    // TRACE0("CGridCtrl::OnLButtonDblClk\n");
 
     CCellID cell = GetCellFromPt(point);
     if( !IsValid( cell) )
