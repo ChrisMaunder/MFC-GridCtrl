@@ -746,6 +746,7 @@ protected:
 	afx_msg void OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags);
     afx_msg void OnChar(UINT nChar, UINT nRepCnt, UINT nFlags);
     afx_msg void OnLButtonDblClk(UINT nFlags, CPoint point);
+    afx_msg void OnRButtonDblClk(UINT nFlags, CPoint point);
     afx_msg BOOL OnEraseBkgnd(CDC* pDC);
     afx_msg void OnSysKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags);
     afx_msg void OnUpdateEditSelectAll(CCmdUI* pCmdUI);
