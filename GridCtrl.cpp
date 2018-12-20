@@ -4829,6 +4829,30 @@ COLORREF CGridCtrl::GetItemFgColour(int nRow, int nCol) const
     return pCell->GetTextClr();
 }
 
+BOOL CGridCtrl::SetItemFrColour(int nRow, int nCol, COLORREF cr /* = CLR_DEFAULT */)
+{
+    if (GetVirtualMode())
+        return FALSE;
+
+    CGridCellBase* pCell = GetCell(nRow, nCol);
+    ASSERT(pCell);
+    if (!pCell)
+        return FALSE;
+
+    pCell->SetFrameClr(cr);
+    return TRUE;
+}
+
+COLORREF CGridCtrl::GetItemFrColour(int nRow, int nCol) const
+{
+    CGridCellBase* pCell = GetCell(nRow, nCol);
+    ASSERT(pCell);
+    if (!pCell)
+        return 0;
+
+    return pCell->GetFrameClr();
+}
+
 BOOL CGridCtrl::SetItemFont(int nRow, int nCol, const LOGFONT* plf)
 {
     if (GetVirtualMode())

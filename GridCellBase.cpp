@@ -147,6 +147,8 @@ BOOL CGridCellBase::Draw(CDC* pDC, int nRow, int nCol, CRect rect,  BOOL bEraseB
         TextBkClr = GetBackClr();
     }
 
+    COLORREF FrameClr = GetFrameClr();
+
     // Draw cell background and highlighting (if necessary)
     if ( IsFocused() || IsDropHighlighted() )
     {
@@ -159,9 +161,9 @@ BOOL CGridCellBase::Draw(CDC* pDC, int nRow, int nCol, CRect rect,  BOOL bEraseB
             bEraseBkgnd = TRUE;
         }
 
-        rect.right++; rect.bottom++;    // FillRect doesn't draw RHS or bottom
         if (bEraseBkgnd)
         {
+            rect.right++; rect.bottom++;    // FillRect doesn't draw RHS or bottom
             TRY 
             {
                 CBrush brush(TextBkClr);
@@ -172,38 +174,12 @@ BOOL CGridCellBase::Draw(CDC* pDC, int nRow, int nCol, CRect rect,  BOOL bEraseB
                 //e->ReportError();
             }
             END_CATCH
-        }
-
-        // Don't adjust frame rect if no grid lines so that the
-        // whole cell is enclosed.
-        if(pGrid->GetGridLines() != GVL_NONE)
-        {
-            rect.right--;
-            rect.bottom--;
+            rect.right--; rect.bottom--;
         }
 
         if (pGrid->GetFrameFocusCell())
         {
-                // Use same color as text to outline the cell so that it shows
-                // up if the background is black.
-            TRY 
-            {
-                CBrush brush(TextClr);
-                pDC->FrameRect(rect, &brush);
-            }
-            CATCH(CResourceException, e)
-            {
-                //e->ReportError();
-            }
-            END_CATCH
-        }
-        pDC->SetTextColor(TextClr);
-
-        // Adjust rect after frame draw if no grid lines
-        if(pGrid->GetGridLines() == GVL_NONE)
-        {
-            rect.right--;
-            rect.bottom--;
+            FrameClr = TextClr;
         }
 
 		//rect.DeflateRect(0,1,1,1);  - Removed by Yogurt
@@ -225,6 +201,38 @@ BOOL CGridCellBase::Draw(CDC* pDC, int nRow, int nCol, CRect rect,  BOOL bEraseB
             rect.right--; rect.bottom--;
         }
         pDC->SetTextColor(TextClr);
+    }
+
+    if (FrameClr != CLR_DEFAULT) {
+        // Don't adjust frame rect if no grid lines so that the
+        // whole cell is enclosed.
+        if (pGrid->GetGridLines() == GVL_NONE)
+        {
+            rect.right++;
+            rect.bottom++;
+        }
+
+        // Use same color as text to outline the cell so that it shows
+        // up if the background is black.
+        TRY
+        {
+            CBrush brush(FrameClr);
+            pDC->FrameRect(rect, &brush);
+        }
+        CATCH(CResourceException, e)
+        {
+            //e->ReportError();
+        }
+        END_CATCH
+
+        pDC->SetTextColor(TextClr);
+
+        // Adjust rect after frame draw if no grid lines
+        if (pGrid->GetGridLines() == GVL_NONE)
+        {
+            rect.right--;
+            rect.bottom--;
+        }
     }
 
     // Draw lines only when wanted
