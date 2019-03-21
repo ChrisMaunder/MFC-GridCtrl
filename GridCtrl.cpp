@@ -6352,6 +6352,7 @@ void CGridCtrl::OnLButtonDown(UINT nFlags, CPoint point)
         if (m_LeftClickDownCell.row < GetFixedRowCount())
 		{
             OnFixedRowClick(m_LeftClickDownCell);
+#ifndef GRIDCONTROL_NO_DRAGDROP
             if(m_AllowReorderColumn && m_LeftClickDownCell.col >=  GetFixedColumnCount())
 			{
 				ResetSelectedRange(); // TODO : This is not the better solution, as we do not see why clicking in column header should reset selection
@@ -6359,6 +6360,7 @@ void CGridCtrl::OnLButtonDown(UINT nFlags, CPoint point)
 				m_MouseMode = MOUSE_PREPARE_DRAG;
 				m_CurCol = m_LeftClickDownCell.col;
 			}
+#endif
 		}
         else if (m_LeftClickDownCell.col < GetFixedColumnCount())
             OnFixedColumnClick(m_LeftClickDownCell);
