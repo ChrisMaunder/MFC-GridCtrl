@@ -578,6 +578,7 @@ BEGIN_MESSAGE_MAP(CGridCtrl, CWnd)
     ON_WM_KEYDOWN()
     ON_WM_CHAR()
     ON_WM_LBUTTONDBLCLK()
+    ON_WM_RBUTTONDBLCLK()
     ON_WM_ERASEBKGND()
     ON_UPDATE_COMMAND_UI(ID_EDIT_SELECT_ALL, OnUpdateEditSelectAll)
     ON_COMMAND(ID_EDIT_SELECT_ALL, OnEditSelectAll)
@@ -6039,6 +6040,23 @@ void CGridCtrl::OnLButtonDblClk(UINT nFlags, CPoint point)
     }
 
     CWnd::OnLButtonDblClk(nFlags, point);
+}
+
+void CGridCtrl::OnRButtonDblClk(UINT nFlags, CPoint point)
+{
+    CCellID cell = GetCellFromPt(point);
+    if (!IsValid(cell))
+    {
+        //ASSERT(FALSE);
+        return;
+    }
+
+    if (m_MouseMode == MOUSE_NOTHING)
+    {
+        SendMessageToParent(cell.row, cell.col, NM_RDBLCLK);
+    }
+
+    CWnd::OnRButtonDblClk(nFlags, point);
 }
 
 void CGridCtrl::OnLButtonDown(UINT nFlags, CPoint point)
