@@ -82,6 +82,7 @@ void CGridCell::Reset()
     m_nFormat = (DWORD)-1;       // Use default from CGridDefaultCell
     m_crBkClr = CLR_DEFAULT;     // Background colour (or CLR_DEFAULT)
     m_crFgClr = CLR_DEFAULT;     // Forground colour (or CLR_DEFAULT)
+    m_crFrClr = CLR_DEFAULT;     // Frame colour (or CLR_DEFAULT)
     m_nMargin = (UINT)-1;        // Use default from CGridDefaultCell
 
     delete m_plfFont;

@@ -93,6 +93,7 @@ public:
     virtual void SetFormat(DWORD /* nFormat */)             = 0 ;
     virtual void SetTextClr(COLORREF /* clr */)             = 0 ;
     virtual void SetBackClr(COLORREF /* clr */)             = 0 ;
+    virtual void SetFrameClr(COLORREF /* clr */)            = 0 ;
     virtual void SetFont(const LOGFONT* /* plf */)          = 0 ;
     virtual void SetMargin( UINT /* nMargin */)             = 0 ;
     virtual void SetGrid(CGridCtrl* /* pGrid */)            = 0 ;
@@ -106,6 +107,7 @@ public:
     virtual DWORD      GetFormat()     const                = 0 ;
     virtual COLORREF   GetTextClr()    const                = 0 ;
     virtual COLORREF   GetBackClr()    const                = 0 ;
+    virtual COLORREF   GetFrameClr()   const                = 0 ;
     virtual LOGFONT  * GetFont()       const                = 0 ;
     virtual CFont    * GetFontObject() const                = 0 ;
     virtual CGridCtrl* GetGrid()       const                = 0 ;

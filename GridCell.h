@@ -58,6 +58,7 @@ public:
     virtual void  SetFormat(DWORD nFormat)       { m_nFormat = nFormat; }                      
     virtual void  SetTextClr(COLORREF clr)       { m_crFgClr = clr;     }                          
     virtual void  SetBackClr(COLORREF clr)       { m_crBkClr = clr;     }                          
+    virtual void  SetFrameClr(COLORREF clr)      { m_crFrClr = clr;     }
     virtual void  SetFont(const LOGFONT* plf);
     virtual void  SetMargin(UINT nMargin)        { m_nMargin = nMargin; }
     virtual CWnd* GetEditWnd() const             { return m_pEditWnd;   }
@@ -72,6 +73,7 @@ public:
     virtual DWORD       GetFormat() const;
     virtual COLORREF    GetTextClr() const          { return m_crFgClr; } // TODO: change to use default cell
     virtual COLORREF    GetBackClr() const          { return m_crBkClr; }
+    virtual COLORREF    GetFrameClr() const         { return m_crFrClr; }
     virtual LOGFONT*    GetFont() const;
     virtual CFont*      GetFontObject() const;
     virtual UINT        GetMargin() const;
@@ -94,6 +96,7 @@ protected:
     DWORD      m_nFormat;
     COLORREF   m_crFgClr;
     COLORREF   m_crBkClr;
+    COLORREF   m_crFrClr;
     LOGFONT*   m_plfFont;
     UINT       m_nMargin;
 

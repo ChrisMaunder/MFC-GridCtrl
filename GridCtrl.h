@@ -391,6 +391,8 @@ public:
     COLORREF GetItemBkColour(int nRow, int nCol) const;
     BOOL   SetItemFgColour(int nRow, int nCol, COLORREF cr = CLR_DEFAULT);
     COLORREF GetItemFgColour(int nRow, int nCol) const;
+    BOOL   SetItemFrColour(int nRow, int nCol, COLORREF cr = CLR_DEFAULT);
+    COLORREF GetItemFrColour(int nRow, int nCol) const;
     BOOL SetItemFont(int nRow, int nCol, const LOGFONT* lf);
     const LOGFONT* GetItemFont(int nRow, int nCol);
 
