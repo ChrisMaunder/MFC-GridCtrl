@@ -1,5 +1,9 @@
 # MFC Grid control 2.27
 
+![](docs/assets/gridctrl.gif)
+
+![](docs/assets/gridviewdemo.png)
+
 ## Preface
 
 This grid is the work of thousands of hours of squinting at pixels, hunting memory leaks, adding new features, fixing new bugs and beating the code by force of will into a form that is as feature rich and useable as something of this form can be. Dozens of developers from all over the world have contributed fixes, improvements and suggestions over the 4 years that the grid has been growing, and there is still no end in sight. Most of the fixes have been sent in by readers so I'm trusting that they have done sufficient testing.
