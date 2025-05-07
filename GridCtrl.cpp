@@ -230,6 +230,8 @@ CGridCtrl::CGridCtrl(int nRows, int nCols, int nFixedRows, int nFixedCols)
                                                    // per mouse wheel notch to scroll
     m_nBarState           = GVL_NONE;
     m_MouseMode           = MOUSE_NOTHING;
+    m_bMouseClickEnabled  = TRUE;
+    m_bMouseMoveEnabled   = TRUE;
     m_nGridLines          = GVL_BOTH;
     m_bEditable           = TRUE;
     m_bListMode           = FALSE;
@@ -5742,6 +5744,10 @@ BOOL CGridCtrl::OnMouseWheel(UINT nFlags, short zDelta, CPoint pt)
 
 void CGridCtrl::OnMouseMove(UINT /*nFlags*/, CPoint point)
 {
+    // If mouse move event is disabled, do nothing
+    if (m_bMouseMoveEnabled != TRUE)
+        return;
+
     CRect rect;
     GetClientRect(rect);
 
@@ -5930,6 +5936,10 @@ CPoint CGridCtrl::GetPointClicked(int nRow, int nCol, const CPoint& point)
 
 void CGridCtrl::OnLButtonDblClk(UINT nFlags, CPoint point)
 {
+    // If mouse event is disabled, do nothing
+    if (m_bMouseClickEnabled != TRUE)
+        return;
+
     // TRACE0("CGridCtrl::OnLButtonDblClk\n");
 
     CCellID cell = GetCellFromPt(point);
@@ -6044,6 +6054,10 @@ void CGridCtrl::OnLButtonDblClk(UINT nFlags, CPoint point)
 
 void CGridCtrl::OnRButtonDblClk(UINT nFlags, CPoint point)
 {
+    // If mouse event is disabled, do nothing
+    if (m_bMouseClickEnabled != TRUE)
+        return;
+
     CCellID cell = GetCellFromPt(point);
     if (!IsValid(cell))
     {
@@ -6061,6 +6075,10 @@ void CGridCtrl::OnRButtonDblClk(UINT nFlags, CPoint point)
 
 void CGridCtrl::OnLButtonDown(UINT nFlags, CPoint point)
 {
+    // If mouse event is disabled, do nothing
+    if (m_bMouseClickEnabled != TRUE)
+        return;
+
 #ifdef GRIDCONTROL_USE_TITLETIPS
     // EFW - Bug Fix
     m_TitleTip.Hide();  // hide any titletips
@@ -6419,6 +6437,10 @@ void CGridCtrl::OnLButtonDown(UINT nFlags, CPoint point)
 
 void CGridCtrl::OnLButtonUp(UINT nFlags, CPoint point)
 {
+    // If mouse event is disabled, do nothing
+    if (m_bMouseClickEnabled != TRUE)
+        return;
+
     // TRACE0("CGridCtrl::OnLButtonUp\n");
 
     CWnd::OnLButtonUp(nFlags, point);
@@ -6539,6 +6561,10 @@ void CGridCtrl::OnLButtonUp(UINT nFlags, CPoint point)
 #ifndef _WIN32_WCE
 void CGridCtrl::OnRButtonDown(UINT nFlags, CPoint point)
 {
+    // If mouse event is disabled, do nothing
+    if (m_bMouseClickEnabled != TRUE)
+        return;
+
     CWnd::OnRButtonDown(nFlags, point);
 	m_bRMouseButtonDown = TRUE;
 
@@ -6552,6 +6578,10 @@ void CGridCtrl::OnRButtonDown(UINT nFlags, CPoint point)
 // menu can be shown without deriving a new grid class.
 void CGridCtrl::OnRButtonUp(UINT nFlags, CPoint point)
 {
+    // If mouse event is disabled, do nothing
+    if (m_bMouseClickEnabled != TRUE)
+        return;
+
     CWnd::OnRButtonUp(nFlags, point);
 
 	m_bRMouseButtonDown = FALSE;

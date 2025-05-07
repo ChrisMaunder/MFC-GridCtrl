@@ -679,6 +679,8 @@ protected:
 
     // Mouse operations such as cell selection
     int         m_MouseMode;
+    BOOL        m_bMouseClickEnabled;
+    BOOL        m_bMouseMoveEnabled;
     BOOL        m_bLMouseButtonDown, m_bRMouseButtonDown;
     CPoint      m_LeftClickDownPoint, m_LastMousePoint;
     CCellID     m_LeftClickDownCell, m_SelectionStartCell;
@@ -802,6 +804,9 @@ public:
 	void SetLayer(int* pLayer); // coming from a previous GetLayer (ignored if not same number of column, or the same revision number)
 	void ForceQuitFocusOnTab(bool b=true) { m_QuitFocusOnTab = b;} // use only if GetParent() is a CDialog
 	void AllowSelectRowInFixedCol(bool b=true) { m_AllowSelectRowInFixedCol = b;} // 
+    void EnableMouseClick(BOOL bEnable) { m_bMouseClickEnabled = bEnable; }
+    void EnableMouseMove(BOOL bEnable) { m_bMouseMoveEnabled = bEnable; }
+
 //    allow acces?
 	intlist m_arRowOrder, m_arColOrder;
 	static CGridCtrl* m_This;
