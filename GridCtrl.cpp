@@ -2331,11 +2331,6 @@ void CGridCtrl::ClearCells(CCellRange Selection)
     Refresh();
 }
 
-#ifndef GRIDCONTROL_NO_CLIPBOARD
-
-////////////////////////////////////////////////////////////////////////////////////////
-// Clipboard functions
-
 // Deletes the contents from the selected cells
 void CGridCtrl::CutSelectedText()
 {
@@ -2350,6 +2345,11 @@ void CGridCtrl::CutSelectedText()
         ValidateAndModifyCellContents(cell.row, cell.col, _T(""));
     }
 }
+
+#ifndef GRIDCONTROL_NO_CLIPBOARD
+
+////////////////////////////////////////////////////////////////////////////////////////
+// Clipboard functions
 
 // Copies text from the selected cells to the clipboard
 COleDataSource* CGridCtrl::CopyTextFromGrid()

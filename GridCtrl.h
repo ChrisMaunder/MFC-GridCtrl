@@ -466,8 +466,8 @@ public:
 ///////////////////////////////////////////////////////////////////////////////////
 // Clipboard, drag and drop, and cut n' paste operations
 ///////////////////////////////////////////////////////////////////////////////////
-#ifndef GRIDCONTROL_NO_CLIPBOARD
     virtual void CutSelectedText();
+#ifndef GRIDCONTROL_NO_CLIPBOARD
     virtual COleDataSource* CopyTextFromGrid();
     virtual BOOL PasteTextToGrid(CCellID cell, COleDataObject* pDataObject, BOOL bSelectPastedCells=TRUE);
 #endif
