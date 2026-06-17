@@ -332,6 +332,8 @@ public:
     int  GetSortColumn() const                    { return m_nSortColumn;             }
     void SetSortAscending(BOOL bAscending)        { m_bAscending = bAscending;        }
     BOOL GetSortAscending() const                 { return m_bAscending;              }
+    void SetShowSortArrow(BOOL bShow = TRUE)      { m_bShowSortArrow = bShow;         }
+    BOOL GetShowSortArrow() const                 { return m_bShowSortArrow;          }
     void SetTrackFocusCell(BOOL bTrack)           { m_bTrackFocusCell = bTrack;       }
     BOOL GetTrackFocusCell()                      { return m_bTrackFocusCell;         }
     void SetFrameFocusCell(BOOL bFrame)           { m_bFrameFocus = bFrame;           }
@@ -716,6 +718,7 @@ protected:
     int          m_bAscending;
     int          m_nSortColumn;
 	PFNLVCOMPARE m_pfnCompare;
+    BOOL         m_bShowSortArrow;
 
     // EFW - Added to support shaded/unshaded printout.  If true, colored
     // cells will print as-is.  If false, all text prints as black on white.

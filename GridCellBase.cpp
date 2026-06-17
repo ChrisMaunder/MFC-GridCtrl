@@ -325,7 +325,7 @@ BOOL CGridCellBase::Draw(CDC* pDC, int nRow, int nCol, CRect rect,  BOOL bEraseB
     }
 
     // Draw sort arrow
-    if (pGrid->GetSortColumn() == nCol && nRow == 0)
+    if (pGrid->GetShowSortArrow() && pGrid->GetSortColumn() == nCol && nRow == 0)
     {
         CSize size = pDC->GetTextExtent(_T("M"));
         int nOffset = 2;

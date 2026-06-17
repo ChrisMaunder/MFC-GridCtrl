@@ -262,6 +262,7 @@ CGridCtrl::CGridCtrl(int nRows, int nCols, int nFixedRows, int nFixedCols)
 
     m_bAscending          = TRUE;       // sorting stuff
     m_nSortColumn         = -1;
+    m_bShowSortArrow      = TRUE;
 	m_pfnCompare		  = NULL;
 	m_pfnVirtualCompare   = NULL;
     m_nAutoSizeColumnStyle = GVS_BOTH;  // Autosize grid using header and data info
